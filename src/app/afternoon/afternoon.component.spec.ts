@@ -30,47 +30,52 @@ describe('AfternoonComponent', () => {
 
   })
 
-  it('display should be On', () => {
-    const nativeElement = fixture.debugElement.nativeElement as HTMLElement;
-    const spanElement = nativeElement.querySelector('span');
-    // console.log(spanElement);
-    component.clicked();
-    fixture.detectChanges();
+  describe('處理DOM', () => {
+    let nativeElement;
+    let spanElement;
+    beforeEach(() => {
+       nativeElement = fixture.debugElement.nativeElement as HTMLElement;
+       spanElement = nativeElement.querySelector('span');
+    })
 
-    expect(spanElement.innerText).toContain('ON');
+    it('display should be On', () => {
+
+      // console.log(spanElement);
+      component.clicked();
+      fixture.detectChanges();
+
+      expect(spanElement.innerText).toContain('ON');
+    })
+
+    it('display should be OFF', () => {
+      fixture.detectChanges();
+
+      expect(spanElement.innerText).toContain('OFF');
+    })
+
+    it('display ON when button clicked', () => {
+      const buttonElement = nativeElement.querySelector('button');
+
+      buttonElement.click();
+      fixture.detectChanges();
+
+      expect(spanElement.innerText).toContain('ON');
+    })
+
+    it('display OFF when button clicked', () => {
+      const buttonElement = nativeElement.querySelector('button');
+
+      // buttonElement.click();
+      // buttonElement.click();
+
+      component.isOn = false;
+
+      fixture.detectChanges();
+
+      expect(spanElement.innerText).toContain('OFF');
+    })
   })
 
-  it('display should be OFF', () => {
-    const nativeElement = fixture.debugElement.nativeElement as HTMLElement;
-    const spanElement = nativeElement.querySelector('span');
 
-    fixture.detectChanges();
-
-    expect(spanElement.innerText).toContain('OFF');
-  })
-
-  it('display ON when button clicked', () => {
-    const nativeElement = fixture.debugElement.nativeElement as HTMLElement;
-    const buttonElement = nativeElement.querySelector('button');
-
-    buttonElement.click();
-    fixture.detectChanges();
-    const spanElement = nativeElement.querySelector('span');
-    expect(spanElement.innerText).toContain('ON');
-  })
-
-  it('display OFF when button clicked', () => {
-    const nativeElement = fixture.debugElement.nativeElement as HTMLElement;
-    const buttonElement = nativeElement.querySelector('button');
-
-    // buttonElement.click();
-    // buttonElement.click();
-
-    component.isOn = false;
-
-    fixture.detectChanges();
-    const spanElement = nativeElement.querySelector('span');
-    expect(spanElement.innerText).toContain('OFF');
-  })
 
 });
