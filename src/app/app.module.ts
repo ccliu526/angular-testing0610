@@ -5,15 +5,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToolsService } from './caption/tools.service';
 import { AfternoonComponent } from './afternoon/afternoon.component';
-
+import { ShowDataComponent } from './show-data/show-data.component';
+import { HttpClient } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
-    AfternoonComponent
+    AfternoonComponent,
+    ShowDataComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClient
   ],
   providers: [
     // ToolsService,
