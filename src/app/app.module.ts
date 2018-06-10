@@ -4,10 +4,12 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToolsService } from './caption/tools.service';
+import { AfternoonComponent } from './afternoon/afternoon.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AfternoonComponent
   ],
   imports: [
     BrowserModule,
